@@ -38,6 +38,7 @@ def overpass(query):
 def run():
     metros = json.load(open('metros.json'))
     out = {k: [] for k in KINDS}
+    raw = {k: [] for k in KINDS}
     log = []
     for metro in metros:
         bb = bbox(metro)
@@ -55,6 +56,8 @@ def run():
                 t = el.get('tags', {})
                 if not t.get('name'):
                     continue
+                c = el.get('center') or {'lat': el.get('lat'), 'lon': el.get('lon')}
+                raw[kind].append({'type': el['type'], 'id': el['id'], 'center': c, 'tags': t})
                 out[kind].append({'osm_id': el['type'][0] + str(el['id']), 'metro': metro, 'name': t.get('name'),
                     'category': t.get('office') or t.get('shop') or t.get('trade') or t.get('craft') or '',
                     'email': t.get('email') or t.get('contact:email') or '', 'website': t.get('website') or t.get('contact:website') or '',
@@ -71,6 +74,12 @@ def run():
                 seen.add(r['osm_id']); uniq.append(r)
         json.dump({'updated': stamp, 'count': len(uniq), 'with_email': sum(1 for r in uniq if r['email']), 'rows': uniq},
                   open('data/%s.json' % kind, 'w'), indent=0)
+        ids, els = set(), []
+        for e in raw[kind]:
+            k = e['type'] + str(e['id'])
+            if k not in ids:
+                ids.add(k); els.append(e)
+        json.dump({'updated': stamp, 'elements': els}, open('data/%s_osm.json' % kind, 'w'))
     json.dump({'updated': stamp, 'log': log}, open('data/log.json', 'w'), indent=1)
     print('\n'.join(log))
 
