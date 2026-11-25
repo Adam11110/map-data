@@ -1,0 +1,98 @@
+{
+ "realtors": [
+  {
+   "metro": "austin",
+   "q": "[out:json][timeout:180];(nwr(around:30000,30.27,-97.74)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:30000,30.27,-97.74)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "chicago",
+   "q": "[out:json][timeout:180];(nwr(around:25000,41.88,-87.63)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:25000,41.88,-87.63)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "cincinnati",
+   "q": "[out:json][timeout:180];(nwr(around:30000,39.1,-84.51)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:30000,39.1,-84.51)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "columbus",
+   "q": "[out:json][timeout:180];(nwr(around:30000,39.96,-83.0)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:30000,39.96,-83.0)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "detroit",
+   "q": "[out:json][timeout:180];(nwr(around:25000,42.33,-83.05)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:25000,42.33,-83.05)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "philadelphia",
+   "q": "[out:json][timeout:180];(nwr(around:25000,39.95,-75.17)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:25000,39.95,-75.17)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "san-jose",
+   "q": "[out:json][timeout:180];(nwr(around:25000,37.34,-121.89)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:25000,37.34,-121.89)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "seattle",
+   "q": "[out:json][timeout:180];(nwr(around:25000,47.61,-122.33)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:25000,47.61,-122.33)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "madison",
+   "q": "[out:json][timeout:180];(nwr(around:30000,43.07,-89.4)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:30000,43.07,-89.4)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "milwaukee",
+   "q": "[out:json][timeout:180];(nwr(around:30000,43.04,-87.91)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:30000,43.04,-87.91)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "miami-dade-county",
+   "q": "[out:json][timeout:180];(nwr(around:35000,25.76,-80.3)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:35000,25.76,-80.3)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "new-york",
+   "q": "[out:json][timeout:180];(nwr(around:15000,40.73,-73.95)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:15000,40.73,-73.95)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "washington-dc",
+   "q": "[out:json][timeout:180];(nwr(around:12000,38.9,-77.03)[\"office\"=\"estate_agent\"][\"name\"];nwr(around:12000,38.9,-77.03)[\"shop\"=\"estate_agent\"][\"name\"];);out tags center;"
+  }
+ ],
+ "suppliers": [
+  {
+   "metro": "austin",
+   "q": "[out:json][timeout:180];(nwr(around:45000,30.27,-97.74)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,30.27,-97.74)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,30.27,-97.74)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "chicago",
+   "q": "[out:json][timeout:180];(nwr(around:45000,41.88,-87.63)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,41.88,-87.63)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,41.88,-87.63)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "cincinnati",
+   "q": "[out:json][timeout:180];(nwr(around:45000,39.1,-84.51)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,39.1,-84.51)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,39.1,-84.51)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "columbus",
+   "q": "[out:json][timeout:180];(nwr(around:45000,39.96,-83.0)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,39.96,-83.0)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,39.96,-83.0)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "detroit",
+   "q": "[out:json][timeout:180];(nwr(around:45000,42.33,-83.05)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,42.33,-83.05)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,42.33,-83.05)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "philadelphia",
+   "q": "[out:json][timeout:180];(nwr(around:45000,39.95,-75.17)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,39.95,-75.17)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,39.95,-75.17)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "san-jose",
+   "q": "[out:json][timeout:180];(nwr(around:45000,37.34,-121.89)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,37.34,-121.89)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,37.34,-121.89)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "seattle",
+   "q": "[out:json][timeout:180];(nwr(around:45000,47.61,-122.33)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,47.61,-122.33)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,47.61,-122.33)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "madison",
+   "q": "[out:json][timeout:180];(nwr(around:45000,43.07,-89.4)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,43.07,-89.4)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,43.07,-89.4)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  },
+  {
+   "metro": "milwaukee",
+   "q": "[out:json][timeout:180];(nwr(around:45000,43.04,-87.91)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,43.04,-87.91)[\"office\"~\"^(company|construction_company)$\"][\"name\"~\"dumpster|roll.?off|waste|disposal|portable (toilet|restroom)|porta|equipment rental|tool rental|crane|scaffold|lumber|building supply|building materials|supply|ready.?mix|concrete|aggregate|landscape supply|stone|brick|drywall|roofing supply|plumbing supply|electric(al)? supply|hvac supply|millwork|cabinet|window|door\",i];nwr(around:45000,43.04,-87.91)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
+  }
+ ]
+}

@@ -4,7 +4,7 @@ on:
     - cron: '0 9 * * 1'   # Mondays 09:00 UTC (3am Chicago)
   workflow_dispatch: {}
   push:
-    paths: ['metros.json', 'fetch.py', '.github/workflows/fetch.yml']
+    paths: ['queries.json', 'fetch.py', '.github/workflows/fetch.yml']
 permissions:
   contents: write
 jobs:
