@@ -5,6 +5,9 @@ on:
   workflow_dispatch: {}
   push:
     paths: ['queries.json', 'fetch.py', '.github/workflows/fetch.yml']
+concurrency:
+  group: weekly-map-data
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
