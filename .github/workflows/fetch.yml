@@ -1,0 +1,26 @@
+name: Weekly map data
+on:
+  schedule:
+    - cron: '0 9 * * 1'   # Mondays 09:00 UTC (3am Chicago)
+  workflow_dispatch: {}
+  push:
+    paths: ['metros.json', 'fetch.py', '.github/workflows/fetch.yml']
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python fetch.py
+      - name: Commit data
+        run: |
+          git config user.name "map-data bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "Weekly map data $(date -u +%F)"
+          git push
