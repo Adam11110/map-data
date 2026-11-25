@@ -1,7 +1,7 @@
 """Weekly OpenStreetMap pull for the n8n prospect finders (realtor + supplier), run on GitHub Actions because the
 public Overpass servers refuse the n8n host. queries.json holds the exact Overpass queries the finders used.
 Output: data/<kind>_osm.json in Overpass format ({elements:[...]}), public OSM data only."""
-import json, os, time, urllib.parse, urllib.request, datetime
+import json, math, os, re, time, urllib.parse, urllib.request, datetime
 
 UA = {'User-Agent': 'map-data-weekly/1.0 (github.com/Adam11110/map-data)'}
 MIRRORS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.systems/api/interpreter', 'https://overpass.private.coffee/api/interpreter']
@@ -9,18 +9,31 @@ MIRRORS = ['https://overpass-api.de/api/interpreter', 'https://overpass.kumi.sys
 def overpass(query):
     body = urllib.parse.urlencode({'data': query}).encode()
     last = None
-    for attempt in range(1):
+    for attempt in range(2):
         for m in MIRRORS:
             try:
                 req = urllib.request.Request(m, data=body, headers=UA)
-                with urllib.request.urlopen(req, timeout=90) as r:
+                with urllib.request.urlopen(req, timeout=200) as r:
                     j = json.loads(r.read().decode('utf-8'))
                 if isinstance(j.get('elements'), list):
                     return j
             except Exception as ex:
                 last = ex
-            time.sleep(5)
+            time.sleep(10 * (attempt + 1))
     raise last or RuntimeError('no answer')
+
+def bbox(m):
+    # around:R,lat,lon -> a bounding box: much cheaper for Overpass than a radius search
+    r, lat, lon = float(m.group(1)), float(m.group(2)), float(m.group(3))
+    dlat = r / 111000.0; dlon = r / (111000.0 * max(0.2, math.cos(math.radians(lat))))
+    return '(%.4f,%.4f,%.4f,%.4f)' % (lat - dlat, lon - dlon, lat + dlat, lon + dlon)
+
+def parts(q):
+    # split '[out..];(a;b;c;);out tags center;' into one request per statement, each with a bounding box
+    head = q[:q.index(';') + 1].replace('[timeout:180]', '[timeout:170]')
+    body = q[q.index('(', len(head)) + 1:q.rindex(');')]
+    stmts = [x.strip() for x in re.split(r';(?=\s*nwr)', body) if x.strip()]
+    return [head + re.sub(r'\(around:(\d+),(-?[\d.]+),(-?[\d.]+)\)', bbox, st.rstrip(';')) + ';out tags center;' for st in stmts]
 
 def run():
     Q = json.load(open('queries.json'))
@@ -29,21 +42,34 @@ def run():
     log = []
     for kind, items in Q.items():
         seen, els = set(), []
+        try:
+            old = json.load(open('data/%s_osm.json' % kind)).get('elements', [])
+        except Exception:
+            old = []
         for it in items:
-            try:
-                r = overpass(it['q'])
-            except Exception as ex:
-                log.append('%s %s: FAILED %s' % (kind, it['metro'], ex)); print(log[-1], flush=True); continue
+            res, err = [], None
+            for sub in parts(it['q']):
+                try:
+                    res.extend(overpass(sub)['elements'])
+                except Exception as ex:
+                    err = ex
+                time.sleep(3)
+            if err and not res:
+                kept = [e for e in old if e.get('metro') == it['metro']]
+                for e in kept:
+                    k = e['type'] + str(e['id'])
+                    if k not in seen:
+                        seen.add(k); els.append(e)
+                log.append('%s %s: FAILED %s (kept %d from last run)' % (kind, it['metro'], err, len(kept))); print(log[-1], flush=True); continue
             n = 0
-            for e in r['elements']:
+            for e in res:
                 k = e['type'] + str(e['id'])
                 if k in seen:
                     continue
                 seen.add(k); n += 1
                 c = e.get('center') or {'lat': e.get('lat'), 'lon': e.get('lon')}
-                els.append({'type': e['type'], 'id': e['id'], 'center': c, 'tags': e.get('tags', {})})
-            log.append('%s %s: %d' % (kind, it['metro'], n)); print(log[-1], flush=True)
-            time.sleep(3)
+                els.append({'type': e['type'], 'id': e['id'], 'center': c, 'tags': e.get('tags', {}), 'metro': it['metro']})
+            log.append('%s %s: %d%s' % (kind, it['metro'], n, ' (partial: %s)' % err if err else '')); print(log[-1], flush=True)
         json.dump({'updated': stamp, 'count': len(els), 'elements': els}, open('data/%s_osm.json' % kind, 'w'))
     json.dump({'updated': stamp, 'log': log}, open('data/log.json', 'w'), indent=1)
     print('\n'.join(log))
