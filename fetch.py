@@ -52,7 +52,7 @@ START = time.time(); BUDGET = 150 * 60  # stop starting new requests after 150 m
 
 def run():
     Q = json.load(open('queries.json'))
-    Q = {k: Q[k] for k in sorted(Q, key=lambda k: 0 if k == 'suppliers' else 1)}  # suppliers first: they have no data yet
+    Q = {k: Q[k] for k in sorted(Q, key=lambda k: {'rentals': 0, 'suppliers': 1}.get(k, 2))}  # rentals first (small, fast), then suppliers, then realtors
     os.makedirs('data', exist_ok=True)
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
     log = []

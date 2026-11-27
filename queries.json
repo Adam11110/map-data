@@ -94,5 +94,47 @@
    "metro": "milwaukee",
    "q": "[out:json][timeout:180];(nwr(around:45000,43.04,-87.91)[\"shop\"~\"^(trade|doityourself|hardware|tool_hire|building_materials|bathroom_furnishing|kitchen|flooring|tiles|paint|windows|doors)$\"];nwr(around:45000,43.04,-87.91)[\"amenity\"=\"waste_disposal\"][\"name\"];);out tags center;"
   }
+ ],
+ "rentals": [
+  {
+   "metro": "austin",
+   "q": "[out:json][timeout:180];(nwr(around:30000,30.27,-97.74)[\"shop\"=\"rental\"];nwr(around:30000,30.27,-97.74)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,30.27,-97.74)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "chicago",
+   "q": "[out:json][timeout:180];(nwr(around:30000,41.88,-87.63)[\"shop\"=\"rental\"];nwr(around:30000,41.88,-87.63)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,41.88,-87.63)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "cincinnati",
+   "q": "[out:json][timeout:180];(nwr(around:30000,39.1,-84.51)[\"shop\"=\"rental\"];nwr(around:30000,39.1,-84.51)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,39.1,-84.51)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "columbus",
+   "q": "[out:json][timeout:180];(nwr(around:30000,39.96,-83.0)[\"shop\"=\"rental\"];nwr(around:30000,39.96,-83.0)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,39.96,-83.0)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "detroit",
+   "q": "[out:json][timeout:180];(nwr(around:30000,42.33,-83.05)[\"shop\"=\"rental\"];nwr(around:30000,42.33,-83.05)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,42.33,-83.05)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "philadelphia",
+   "q": "[out:json][timeout:180];(nwr(around:30000,39.95,-75.17)[\"shop\"=\"rental\"];nwr(around:30000,39.95,-75.17)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,39.95,-75.17)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "san-jose",
+   "q": "[out:json][timeout:180];(nwr(around:30000,37.34,-121.89)[\"shop\"=\"rental\"];nwr(around:30000,37.34,-121.89)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,37.34,-121.89)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "seattle",
+   "q": "[out:json][timeout:180];(nwr(around:30000,47.61,-122.33)[\"shop\"=\"rental\"];nwr(around:30000,47.61,-122.33)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,47.61,-122.33)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "madison",
+   "q": "[out:json][timeout:180];(nwr(around:30000,43.07,-89.4)[\"shop\"=\"rental\"];nwr(around:30000,43.07,-89.4)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,43.07,-89.4)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  },
+  {
+   "metro": "milwaukee",
+   "q": "[out:json][timeout:180];(nwr(around:30000,43.04,-87.91)[\"shop\"=\"rental\"];nwr(around:30000,43.04,-87.91)[\"office\"~\"^(company|logistics|construction_company)$\"][\"name\"~\"storage|container|portable|porta|fenc|dumpster|roll.?off\",i];nwr(around:30000,43.04,-87.91)[\"amenity\"=\"vehicle_rental\"][\"name\"~\"storage|container|portable\",i];);out tags center;"
+  }
  ]
 }
